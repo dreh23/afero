@@ -90,6 +90,16 @@ func (b *BasePathFs) Lstat(name string) (fi os.FileInfo, err error) {
 	return b.source.Lstat(name)
 }
 
+func (b *BasePathFs) Symlink(oldname, newname string) (err error) {
+	if oldname, err = b.RealPath(oldname); err != nil {
+		return &os.PathError{"symlink", oldname, err}
+	}
+	if newname, err = b.RealPath(newname); err != nil {
+		return &os.PathError{"symlink", newname, err}
+	}
+	return b.source.Symlink(oldname, newname)
+}
+
 func (b *BasePathFs) Rename(oldname, newname string) (err error) {
 	if oldname, err = b.RealPath(oldname); err != nil {
 		return &os.PathError{"rename", oldname, err}

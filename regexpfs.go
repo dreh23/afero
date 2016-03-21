@@ -95,6 +95,10 @@ func (r *RegexpFs) Rename(oldname, newname string) error {
 	return r.source.Rename(oldname, newname)
 }
 
+func (r *RegexpFs) Symlink(oldname, newname string) error {
+	return nil
+}
+
 func (r *RegexpFs) RemoveAll(p string) error {
 	dir, err := IsDir(r.source, p)
 	if err != nil {

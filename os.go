@@ -81,6 +81,10 @@ func (OsFs) Rename(oldname, newname string) error {
 	return os.Rename(oldname, newname)
 }
 
+func (OsFs) Symlink(oldname, newname string) error {
+	return os.Symlink(oldname, newname)
+}
+
 func (OsFs) Stat(name string) (os.FileInfo, error) {
 	return os.Stat(name)
 }

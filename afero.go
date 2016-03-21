@@ -90,6 +90,9 @@ type Fs interface {
 
 	Lstat(name string) (os.FileInfo, error)
 
+	//Symlink creates newname as a symbolic link to oldname, or an error, if any
+	Symlink(oldname, newname string) error
+
 	// The name of this FileSystem
 	Name() string
 

@@ -298,6 +298,30 @@ func (m *MemMapFs) Rename(oldname, newname string) error {
 	return nil
 }
 
+func (m *MemMapFs) Symlink(oldname, newname string) error {
+	/*	var mode uint32
+		mode = 134218239
+		oldname = normalizePath(oldname)
+		newname = normalizePath(newname)
+
+		if oldname == newname {
+			return nil
+		}
+
+		f, ok := m.getData()[oldname]
+		if !ok {
+			return &os.PathError{"symlink", oldname, ErrFileNotFound}
+		}
+
+		f.
+
+		m.mu.Lock()
+		mem.SetMode(f, mode)
+		m.mu.Unlock()*/
+
+	return nil
+}
+
 func (m *MemMapFs) Stat(name string) (os.FileInfo, error) {
 	f, err := m.Open(name)
 	if err != nil {
